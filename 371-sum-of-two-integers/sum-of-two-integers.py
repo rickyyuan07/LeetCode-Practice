@@ -6,7 +6,7 @@ class Solution:
         while b != 0:
             # XOR
             sum_ = (a ^ b) & MASK
-            carry = ((a & b) << 1)
+            carry = (a & b) << 1
             a, b = sum_, carry
         
         return a if a <= INT_MAX else ~(a ^ MASK)
