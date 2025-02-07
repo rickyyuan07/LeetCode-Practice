@@ -3,12 +3,19 @@ class Solution:
         balls = defaultdict(int)
         colors = Counter()
         ans = []
-        for q in queries:
-            colors[balls[q[0]]] -= 1
-            if colors[balls[q[0]]] <= 0:
-                del colors[balls[q[0]]]
-            balls[q[0]] = q[1]
-            colors[q[1]] += 1
+        for id, color in queries:
+            prev_color = balls[id]
 
+            if prev_color == color:
+                ans.append(len(colors))
+                continue
+                
+            if prev_color in colors:
+                colors[prev_color] -= 1
+                if colors[prev_color] == 0:
+                    del colors[prev_color]
+            
+            balls[id] = color
+            colors[color] += 1
             ans.append(len(colors))
         return ans
