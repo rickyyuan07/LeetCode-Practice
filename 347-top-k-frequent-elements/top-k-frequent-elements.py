@@ -12,4 +12,4 @@ class Solution:
         while heap:
             result.append(heapq.heappop(heap)[-1])
 
-        return result
+        return list(reversed(result))
