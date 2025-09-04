@@ -1,14 +1,12 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        n = len(prices)
-        future_max_list = [0] * n
-        max_price = -1
-        for i in range(n):
-            max_price = max(max_price, prices[n-1-i])
-            future_max_list[n-1-i] = max_price
+        min_price = float('inf')
+        max_profit = 0
         
-        ans = 0
-        for i in range(n-1):
-            ans = max(ans, future_max_list[i+1] - prices[i])
+        for price in prices:
+            min_price = min(min_price, price)
+            max_profit = max(max_profit, price - min_price)
         
-        return ans
+        return max_profit
+
+# Could also think of it as standing at position i and find the cheapest to the left and highest to the right
