@@ -23,11 +23,13 @@ class Solution:
             return False
         
         s_path, d_path = [], []
+        # find the path to both values respectively
         findPath(root, startValue, s_path)
         findPath(root, destValue, d_path)
         
         p = 0
         n_s, n_d = len(s_path), len(d_path)
+        # Get rid of the longest common prefix for both paths
         while p < n_s and p < n_d and s_path[p] == d_path[p]:
             p += 1
         
