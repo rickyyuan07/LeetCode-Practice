@@ -3,10 +3,6 @@ class Solution:
         n = len(nums)
         if n == 0:
             return [-1, -1]
-        if n == 1:
-            if nums[0] == target:
-                return [0, 0]
-            return [-1, -1]
         l, r = 0, n
         # Find left
         while l < r:
@@ -19,7 +15,6 @@ class Solution:
         left_idx = l
         if left_idx == n or nums[left_idx] != target:
             return [-1, -1]
-
 
         l, r = 0, n
         # Find right
