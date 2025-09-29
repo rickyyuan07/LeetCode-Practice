@@ -3,27 +3,9 @@ class Solution:
         n = len(nums)
         if n == 0:
             return [-1, -1]
-        l, r = 0, n
-        # Find left
-        while l < r:
-            m = (l+r) // 2
-            if nums[m] >= target:
-                r = m
-            else:
-                l = m+1
         
-        left_idx = l
-        if left_idx == n or nums[left_idx] != target:
+        left = bisect.bisect_left(nums, target)
+        right = bisect.bisect_right(nums, target)
+        if left >= n or nums[left] != target:
             return [-1, -1]
-
-        l, r = 0, n
-        # Find right
-        while l < r:
-            m = (l+r) // 2
-            if nums[m] > target:
-                r = m
-            else:
-                l = m+1
-
-        right_idx = l
-        return [left_idx, right_idx-1]
+        return [left, right-1]
