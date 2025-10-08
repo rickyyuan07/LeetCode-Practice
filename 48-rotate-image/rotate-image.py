@@ -3,13 +3,17 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
+        self.transpose(matrix)
+        self.reflect(matrix)
+        
+    def transpose(self, matrix):
         n = len(matrix)
-        for i in range(n//2):
-            r1, r2 = i, n-i-1
-            c1, c2 = i, n-i-1
-            for j in range(n-1-2*i):
-                matrix[r1+j][c2], matrix[r1][c1+j] = matrix[r1][c1+j], matrix[r1+j][c2]
-                matrix[r2-j][c1], matrix[r1][c1+j] = matrix[r1][c1+j], matrix[r2-j][c1]
-                matrix[r2][c2-j], matrix[r2-j][c1] = matrix[r2-j][c1], matrix[r2][c2-j]
-
-        return
+        for i in range(n):
+            for j in range(i+1, n):
+                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+    
+    def reflect(self, matrix):
+        n = len(matrix)
+        for i in range(n):
+            for j in range(n//2):
+                matrix[i][j], matrix[i][n-1-j] = matrix[i][n-1-j], matrix[i][j]
