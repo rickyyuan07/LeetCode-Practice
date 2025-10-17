@@ -12,6 +12,7 @@ class Solution:
             if pq and pq[0][0] <= s:
                 heapq.heappop(pq)
             
-            ans = max(ans, len(pq))
+            # ans = max(ans, len(pq))
         
-        return ans
+        # return ans
+        return len(pq)
