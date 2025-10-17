@@ -11,6 +11,7 @@ class Solution:
 
         # Binary Search on nums1
         while left <= right:
+            # Given a candidate median index in nums1. we can uniquely find the median index in nums2 by calculating total_left - i
             i = (left+right) // 2  # Take i number of items for nums1
             j = total_left - i  # Take j number of items for nums2
 
