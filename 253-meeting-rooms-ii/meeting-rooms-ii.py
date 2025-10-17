@@ -9,10 +9,9 @@ class Solution:
         for itv in intervals:
             s, e = itv
             heapq.heappush(pq, (e, s))
-            if pq and pq[0][0] <= s:
+            while pq and pq[0][0] <= s:
                 heapq.heappop(pq)
             
-            # ans = max(ans, len(pq))
+            ans = max(ans, len(pq))
         
-        # return ans
-        return len(pq)
+        return ans
